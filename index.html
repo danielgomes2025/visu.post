@@ -1,1 +1,316 @@
 
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VISÚ.post | Pós-Produção Audiovisual de Alto Impacto</title>
+    
+    <!-- Carrega o Tailwind CSS direto do navegador -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Carrega os Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Configuração da paleta de cores extraída da imagem -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'awo-black': '#1a2221',    /* O tom mais escuro */
+                        'awo-deep': '#384d4d',     /* Cinza petróleo profundo */
+                        'awo-sage': '#878e85',     /* Cinza médio esverdeado */
+                        'awo-mint': '#d1e9db',     /* Verde menta claro (Destaque) */
+                        'awo-ash': '#cbd0cc',      /* Cinza claro */
+                        'awo-offwhite': '#eceae6'  /* O tom mais claro para fundo/texto */
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Ajuste fino para a barra de rolagem */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a2221;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #384d4d;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #878e85;
+        }
+
+        /* Esconder scrollbar do carrossel para um look mais clean */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-awo-black text-awo-offwhite font-sans selection:bg-awo-mint selection:text-awo-black overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-awo-black/80 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <!-- Marca VISÚ.post -->
+                    <span class="text-3xl font-black tracking-tighter flex items-center gap-1 uppercase">
+                        VISÚ<span class="text-awo-mint lowercase">.post</span>
+                    </span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <button onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})" class="hover:text-awo-mint transition-colors px-3 py-2 text-sm font-medium">Sobre</button>
+                        <button onclick="document.getElementById('studio').scrollIntoView({behavior: 'smooth'})" class="hover:text-awo-mint transition-colors px-3 py-2 text-sm font-medium">Especialidades</button>
+                        <button onclick="document.getElementById('reels').scrollIntoView({behavior: 'smooth'})" class="hover:text-awo-mint transition-colors px-3 py-2 text-sm font-medium">Reels</button>
+                        <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="bg-awo-mint text-awo-black hover:bg-white px-5 py-2 rounded-full text-sm font-bold transition-all">Orçamento</button>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button onclick="toggleMenu()" class="text-awo-ash hover:text-white p-2">
+                        <i data-lucide="menu" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-awo-deep border-b border-white/10">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
+                <button onclick="scrollToSection('about')" class="block w-full text-left px-3 py-2 hover:bg-awo-sage/20 rounded-md text-white">Sobre</button>
+                <button onclick="scrollToSection('studio')" class="block w-full text-left px-3 py-2 hover:bg-awo-sage/20 rounded-md text-white">Especialidades</button>
+                <button onclick="scrollToSection('reels')" class="block w-full text-left px-3 py-2 hover:bg-awo-sage/20 rounded-md text-white">Reels</button>
+                <button onclick="scrollToSection('contact')" class="block w-full text-left px-3 py-2 text-awo-mint font-bold">Contato</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- Abstract Background Elements com a nova paleta -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-awo-mint/10 blur-[120px] rounded-full opacity-40 pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight text-white uppercase">
+                Pós-Produção Audiovisual <br class="hidden md:block" />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-awo-mint to-awo-sage"> de Alto Impacto</span>
+            </h1>
+            
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-awo-ash mb-10">
+                A fusão de 20 anos de experiência com o que há de mais avançado em I.A. Generativa. Do Color Grading cinematográfico à edição de alta performance.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16">
+                <button onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})" class="flex items-center justify-center gap-2 bg-awo-offwhite text-awo-black px-8 py-4 rounded-lg font-bold hover:bg-white transition-all shadow-[0_0_20px_rgba(255,255,255,0.05)] uppercase tracking-tighter">
+                    <i data-lucide="play-circle" class="w-5 h-5"></i>
+                    Ver Showreel
+                </button>
+                <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="flex items-center justify-center gap-2 bg-awo-deep border border-awo-sage/30 text-white px-8 py-4 rounded-lg font-bold hover:bg-awo-sage/40 transition-all uppercase tracking-tighter">
+                    <i data-lucide="message-square" class="w-5 h-5"></i>
+                    Solicitar Proposta
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section (Showreel Principal) -->
+    <section id="about" class="py-20 bg-awo-deep/20 border-y border-white/5">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-8 text-white uppercase tracking-tight">O Olhar do Editor + I.A</h2>
+            
+            <div class="text-lg text-awo-ash leading-relaxed space-y-6 mb-12 max-w-3xl mx-auto font-light">
+                <p>
+                    Minha base são <span class="text-awo-offwhite font-semibold border-b border-awo-mint">20 anos de ilha de edição e pós-produção</span>, entregando estética refinada e narrativa. Hoje, integro essa bagagem com as ferramentas mais potentes de <span class="text-awo-mint font-semibold">I.A. Generativa</span> para elevar cada frame.
+                </p>
+            </div>
+
+            <!-- MAIN PORTFOLIO VIDEO FRAME -->
+            <div class="w-full aspect-video bg-awo-black rounded-2xl border border-white/10 shadow-2xl flex items-center justify-center relative overflow-hidden group hover:border-awo-mint/50 transition-all duration-500">
+                <iframe 
+                    src="https://player.vimeo.com/video/1159211576?h=0&title=0&byline=0&portrait=0" 
+                    class="w-full h-full absolute inset-0" 
+                    frameBorder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    allowFullScreen
+                    title="VISÚ.post Showreel">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Studio Audiovisual Section -->
+    <section id="studio" class="py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-sm font-bold tracking-wider text-awo-mint uppercase mb-2">Expertise Técnica</h2>
+                <h3 class="text-4xl font-bold mb-4 text-white uppercase tracking-tight">Especialidades do Studio</h3>
+                <p class="text-awo-ash max-w-2xl mx-auto font-light">
+                    Entregando o padrão ouro da indústria cinematográfica para publicidade, institucional e entretenimento.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 text-center">
+                <div class="p-8 bg-awo-deep/30 rounded-2xl border border-white/5 hover:border-awo-mint/30 transition-all group">
+                    <div class="w-14 h-14 bg-awo-mint/10 text-awo-mint rounded-full flex items-center justify-center mx-auto mb-6 transition-transform group-hover:scale-110">
+                        <i data-lucide="monitor-play"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 text-white uppercase tracking-tighter">Color Grading</h4>
+                    <p class="text-awo-ash text-sm leading-relaxed">Tratamento de cor preciso com DaVinci Resolve para criar a atmosfera certa.</p>
+                </div>
+                <div class="p-8 bg-awo-deep/30 rounded-2xl border border-white/5 hover:border-awo-mint/30 transition-all group border-b-2 border-b-awo-mint/20">
+                    <div class="w-14 h-14 bg-awo-mint/10 text-awo-mint rounded-full flex items-center justify-center mx-auto mb-6 transition-transform group-hover:scale-110">
+                        <i data-lucide="layers"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 text-white uppercase tracking-tighter">Edição & Montagem</h4>
+                    <p class="text-awo-ash text-sm leading-relaxed">Narrativas ágeis e cortes inteligentes que prendem a atenção do início ao fim.</p>
+                </div>
+                <div class="p-8 bg-awo-deep/30 rounded-2xl border border-white/5 hover:border-awo-mint/30 transition-all group">
+                    <div class="w-14 h-14 bg-awo-mint/10 text-awo-mint rounded-full flex items-center justify-center mx-auto mb-6 transition-transform group-hover:scale-110">
+                        <i data-lucide="zap"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 text-white uppercase tracking-tighter">Pós-Produção e I.A. Generativa</h4>
+                    <p class="text-awo-ash text-sm leading-relaxed">Fluxo de trabalho híbrido: o olhar do editor potencializado por ferramentas de inteligência artificial para restauração e criação de assets.</p>
+                </div>
+            </div>
+            
+            <!-- Tech Stack Bar -->
+            <div class="pt-12 border-t border-white/5 flex flex-wrap justify-center gap-8 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
+                 <span class="text-xl font-bold tracking-tight flex items-center gap-2 text-awo-offwhite"><div class="w-2 h-2 bg-awo-sage rounded-full"></div>DaVinci Resolve</span>
+                 <span class="text-xl font-bold tracking-tight flex items-center gap-2 text-awo-offwhite"><div class="w-2 h-2 bg-awo-mint rounded-full"></div>Premiere Pro</span>
+                 <span class="text-xl font-bold tracking-tight flex items-center gap-2 text-awo-offwhite"><div class="w-2 h-2 bg-awo-ash rounded-full"></div>After Effects</span>
+                 <span class="text-xl font-bold tracking-tight flex items-center gap-2 text-awo-offwhite"><div class="w-2 h-2 bg-awo-deep rounded-full"></div>Mocha Pro</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- REELS / PORTFÓLIO VERTICAL -->
+    <section id="reels" class="py-24 bg-awo-deep/40 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                <div>
+                    <h2 class="text-sm font-bold tracking-wider text-awo-mint uppercase mb-2">Vertical Performance</h2>
+                    <h3 class="text-4xl font-bold text-white uppercase">Reels & Social Media</h3>
+                </div>
+                <p class="text-awo-ash max-w-md font-light italic">
+                    Edição dinâmica otimizada para retenção e engajamento em plataformas verticais.
+                </p>
+            </div>
+
+            <!-- Carrossel Container -->
+            <div class="relative group">
+                <!-- Botões de Navegação (Desktop) -->
+                <button onclick="document.getElementById('carousel').scrollBy({left: -300, behavior: 'smooth'})" class="absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-awo-black/80 p-3 rounded-full border border-white/10 hover:bg-awo-mint hover:text-awo-black transition-all hidden lg:flex items-center justify-center shadow-xl">
+                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                </button>
+                <button onclick="document.getElementById('carousel').scrollBy({left: 300, behavior: 'smooth'})" class="absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-awo-black/80 p-3 rounded-full border border-white/10 hover:bg-awo-mint hover:text-awo-black transition-all hidden lg:flex items-center justify-center shadow-xl">
+                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                </button>
+
+                <!-- Carrossel Wrapper -->
+                <div id="carousel" class="flex gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-8 px-2">
+                    
+                    <div class="min-w-[280px] md:min-w-[320px] aspect-[9/16] bg-awo-black rounded-2xl overflow-hidden snap-center border border-white/5 hover:border-awo-mint/50 transition-all shadow-2xl">
+                        <iframe src="https://player.vimeo.com/video/1158513832?h=0&title=0&byline=0&portrait=0" class="w-full h-full object-cover" frameBorder="0" allowFullScreen></iframe>
+                    </div>
+
+                    <div class="min-w-[280px] md:min-w-[320px] aspect-[9/16] bg-awo-black rounded-2xl overflow-hidden snap-center border border-white/5 hover:border-awo-mint/50 transition-all shadow-2xl">
+                        <iframe src="https://player.vimeo.com/video/1158514099?h=0&title=0&byline=0&portrait=0" class="w-full h-full object-cover" frameBorder="0" allowFullScreen></iframe>
+                    </div>
+
+                    <div class="min-w-[280px] md:min-w-[320px] aspect-[9/16] bg-awo-black rounded-2xl overflow-hidden snap-center border border-white/5 hover:border-awo-mint/50 transition-all shadow-2xl">
+                        <iframe src="https://player.vimeo.com/video/1158528559?h=0&title=0&byline=0&portrait=0" class="w-full h-full object-cover" frameBorder="0" allowFullScreen></iframe>
+                    </div>
+
+                    <div class="min-w-[280px] md:min-w-[320px] aspect-[9/16] bg-awo-black rounded-2xl overflow-hidden snap-center border border-white/5 hover:border-awo-mint/50 transition-all shadow-2xl">
+                        <iframe src="https://player.vimeo.com/video/1158527582?h=0&title=0&byline=0&portrait=0" class="w-full h-full object-cover" frameBorder="0" allowFullScreen></iframe>
+                    </div>
+
+                    <div class="min-w-[280px] md:min-w-[320px] aspect-[9/16] bg-awo-black rounded-2xl overflow-hidden snap-center border border-white/5 hover:border-awo-mint/50 transition-all shadow-2xl">
+                        <iframe src="https://player.vimeo.com/video/1159211576?h=0&title=0&byline=0&portrait=0" class="w-full h-full object-cover" frameBorder="0" allowFullScreen></iframe>
+                    </div>
+
+                </div>
+            </div>
+            
+            <!-- Indicador Visual (Mobile) -->
+            <div class="flex justify-center gap-2 mt-4 lg:hidden">
+                <div class="w-8 h-1 bg-awo-mint rounded-full"></div>
+                <div class="w-2 h-1 bg-awo-sage rounded-full opacity-50"></div>
+                <div class="w-2 h-1 bg-awo-sage rounded-full opacity-50"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Footer Section -->
+    <footer id="contact" class="py-24 border-t border-white/10 bg-awo-black relative overflow-hidden">
+        <!-- Detalhe decorativo final -->
+        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-awo-mint/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            
+            <h2 class="text-4xl font-bold mb-6 text-white uppercase tracking-tighter">Pronto para elevar seu projeto?</h2>
+            <p class="text-awo-ash mb-12 max-w-md mx-auto font-light italic">Entre em contato para discutir sua próxima produção com a precisão da VISÚ.post.</p>
+
+            <a href="https://wa.me/message/4WTESZSDVZDMB1" target="_blank" class="inline-block bg-awo-mint text-awo-black text-lg font-bold px-12 py-5 rounded-full hover:bg-white transition-all shadow-xl shadow-awo-mint/10 mb-16 uppercase tracking-tighter">
+                Falar no WhatsApp
+            </a>
+
+            <div class="flex justify-center space-x-12 text-awo-ash">
+                <a href="mailto:antunes.daniell@gmail.com" class="hover:text-awo-mint transition-colors flex flex-col items-center gap-2">
+                    <i data-lucide="mail" class="w-8 h-8"></i>
+                    <span class="text-[10px] uppercase tracking-widest font-bold">E-mail</span>
+                </a>
+            </div>
+
+            <div class="mt-20 pt-8 border-t border-white/5 text-awo-sage text-[10px] font-mono tracking-[0.4em] uppercase">
+                &copy; 2026 VISÚ.post — Pós-Produção Audiovisual. Maceió, AL.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts simples para o menu mobile funcionar -->
+    <script>
+        lucide.createIcons();
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                menu.classList.add('hidden');
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        }
+
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('mobile-menu').classList.add('hidden');
+                document.getElementById('menu-icon').setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            }
+        }
+    </script>
+</body>
+</html>
